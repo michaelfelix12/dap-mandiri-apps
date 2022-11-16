@@ -8,6 +8,7 @@ import { FaqComponent } from './faq/faq.component';
 import { InstructorComponent } from './instructor/instructor.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home.component';
+import { CourseComponent } from './course/course.component';
 
 const components = [
     BannerComponent,
@@ -17,7 +18,8 @@ const components = [
     FaqComponent,
     InstructorComponent,
     ContactComponent,
-    HomeComponent
+    HomeComponent,
+    CourseComponent,
 ]
 
 @NgModule({
