@@ -2,7 +2,21 @@
 <section class="p-5">
   <div class="container">
     <div class="row text-center g-4">
-      <div class="col-md">
+
+      <div class="col-md" *ngFor="let service of services">
+        <div class="card {{ service.background }} {{ service.textColor }}">
+          <div class="card-body text-center">
+            <div class="h1 mb-3">
+              <i class="{{ service.icon }}"></i>
+            </div>
+            <h3 class="card-title mb-3"> {{ service.title }} </h3>
+            <p class="card-text"> {{ service.desc }} </p>
+            <a href="" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="col-md">
         <div class="card bg-dark text-light">
           <div class="card-body text-center">
             <div class="h1 mb-3">
@@ -16,9 +30,9 @@
             <a href="" class="btn btn-primary">Read More</a>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div class="col-md">
+      <!-- <div class="col-md">
         <div class="card bg-primary text-light">
           <div class="card-body text-center">
             <div class="h1 mb-3">
@@ -32,9 +46,9 @@
             <a href="" class="btn btn-dark">Read More</a>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div class="col-md">
+      <!-- <div class="col-md">
         <div class="card bg-dark text-light">
           <div class="card-body text-center">
             <div class="h1 mb-3">
@@ -48,7 +62,8 @@
             <a href="" class="btn btn-primary">Read More</a>
           </div>
         </div>
-      </div>
+      </div> -->
+
     </div>
   </div>
 </section>

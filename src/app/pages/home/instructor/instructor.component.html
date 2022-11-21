@@ -14,8 +14,29 @@ class="bg-primary text-light p-5 text-sm-start"
   </div>
 
   <div class="row text-center g-4">
+    <div class="col-md" *ngFor="let i of instructor">
+      <div class="card bg-light text-dark">
+        <div class="card-body text-center">
+          <div class="h1 mb-3">
+            <img
+              src="{{ i.img }}"
+              alt=""
+              class="rounded-circle mb-3"
+            />
+            <h3 class="card-title mb-3">{{i.name}}</h3>
+          </div>
+          <p class="card-text">
+            {{i.desc}}
+          </p>
+          <a href="{{sosmed.link}}" *ngFor="let sosmed of i.socialMedia">
+            <i class="{{sosmed.icon}} p-1"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
     <!-- item 1 -->
-    <div class="col-md">
+    <!-- <div class="col-md">
       <div class="card bg-light text-dark">
         <div class="card-body text-center">
           <div class="h1 mb-3">
@@ -34,10 +55,10 @@ class="bg-primary text-light p-5 text-sm-start"
           </p>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- item 2 -->
-    <div class="col-md">
+    <!-- <div class="col-md">
       <div class="card bg-light text-dark">
         <div class="card-body text-center">
           <div class="h1 mb-3">
@@ -57,10 +78,10 @@ class="bg-primary text-light p-5 text-sm-start"
           </p>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- item 3 -->
-    <div class="col-md">
+    <!-- <div class="col-md">
       <div class="card bg-light text-dark">
         <div class="card-body text-center">
           <div class="h1 mb-3">
@@ -79,10 +100,10 @@ class="bg-primary text-light p-5 text-sm-start"
           </p>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- item 4 -->
-    <div class="col-md">
+    <!-- <div class="col-md">
       <div class="card bg-light text-dark">
         <div class="card-body text-center">
           <div class="h1 mb-3">
@@ -101,7 +122,7 @@ class="bg-primary text-light p-5 text-sm-start"
           </p>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 </section>

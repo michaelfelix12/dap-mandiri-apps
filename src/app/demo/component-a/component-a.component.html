@@ -1,6 +1,32 @@
 <h1>Component A</h1>
+
+<!-- Data Binding -->
+<!-- String Interpolation -->
 <p *ngIf="name">Name: {{name}}</p>
 <p *ngIf="address">Address: {{address}}</p>
+<p *ngIf="participants">Participants: {{participants}}</p>
+<p> {{ 10 * 10 }} </p>
+<!-- Tidak dapat melakukan assignment : error -->
+<!-- <p> {{ name = 'Pluto' }} </p> -->
+<!-- Tidak dapat melakukan binding object secara literal : [object, Object] -->
+<!-- Language: {{languages}} -->
+<p> Language: {{ languages.name }} {{ languages.status }}</p>
+<p> Language: {{ onViewLanguage() }} </p>
+<p> onMessage(): {{ onMessage() }} </p>
+
+<!-- <ul class="list-group">
+  <li class="list-group-item" *ngFor="let employee of mandiriEmployee">
+    {{ employee.name }}
+  </li>
+</ul> -->
+
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let employee of mandiriEmployee; let i=index">
+    <!-- index as i -->
+    {{ i+1 }}. Nama: {{ employee.name }}, Alamat: {{ employee.address }}, Unit: {{employee.unit}}
+  </li>
+</ul>
+
 <ul class="list">
   <li><a routerLink="/demo/component-a/child-aa">Child AA</a></li>
   <li><a routerLink="/demo/component-a/child-ab">Child AB</a></li>
