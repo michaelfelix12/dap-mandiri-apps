@@ -9,6 +9,8 @@ import { InstructorComponent } from './instructor/instructor.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home.component';
 import { CourseComponent } from './course/course.component';
+import { RouterModule } from '@angular/router';
+import { HomeRoutingModule } from './home-routing.module';
 
 const components = [
     BannerComponent,
@@ -27,7 +29,9 @@ const components = [
     ...components,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    HomeRoutingModule
   ],
   exports: [
     ...components

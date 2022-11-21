@@ -41,7 +41,25 @@ const routes: Routes = [
   //   component: NotFoundComponent
   // }
 
-  //Lazy Load
+  // Lazy Load
+  // {
+  //   path: 'demo',
+  //   loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
+  // },
+  // {
+  //   path: '',
+  //   redirectTo: 'demo/component-a',
+  //   pathMatch: 'full'
+  // },
+  // {
+  //   path: '**',
+  //   component: NotFoundComponent
+  // }
+
+  {
+    path: 'pages',
+    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
+  },
   {
     path: 'demo',
     loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
