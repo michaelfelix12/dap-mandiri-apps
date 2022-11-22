@@ -1,0 +1,16 @@
+<section class="p-5">
+  <h1 class="text-normal">Child Component</h1>
+  <h5>{{title}}</h5>
+
+  <h1>{{count}}</h1>
+
+  <div class="btn-group mt-5">
+    <div class="btn btn-outline-primary" (click)="onIncrease()">+</div>
+    <div class="btn btn-outline-warning" (click)="onDecrease()">-</div>
+  </div>
+
+  <div class="mb-5">
+    <input type="text" class="form-control" (change)="onMessageInputShared($event)">
+  </div>
+
+</section>

@@ -5,6 +5,7 @@ import { SharedModule } from './shared/shared.module'
 import { PagesModule } from './pages/pages.module'
 import { AppRoutingModule } from './app-routing.module';
 import { CoursesModule } from "./pages/courses/courses.module";
+import { ParentComponent } from './demo/parent/parent.component';
 const components = [
   AppComponent,
 ]

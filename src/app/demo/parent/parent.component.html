@@ -1,0 +1,18 @@
+<section class="p-5">
+  <h1 class="text-danger" style="margin-top: 50px">Parent Component</h1>
+  <h1>{{ counter }}</h1>
+
+  <h5 class="mt-t mb-5">{{ messageOutputParent }}</h5>
+</section>
+
+<!-- <app-child
+  [title]="title"
+  (counter)="onChangeCounter($event)"
+  (messageOutputParent)="onChangeMessage($event)"
+></app-child> -->
+
+<app-child
+  [title]="title"
+  [(counter)]="counter"
+  (messageOutputParent)="onChangeMessage($event)"
+></app-child>
