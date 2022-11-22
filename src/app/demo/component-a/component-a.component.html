@@ -21,9 +21,11 @@
 </ul> -->
 
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let employee of mandiriEmployee; let i=index">
-    <!-- index as i -->
-    {{ i+1 }}. Nama: {{ employee.name }}, Alamat: {{ employee.address }}, Unit: {{employee.unit}}
+  <li class="list-group-item" *ngFor="let employee of mandiriEmployee; let i=index"> <!-- index as i -->
+
+    <span [ngStyle]="{'color': i % 2 == 0 ? 'gold' : 'blue'}"> <!-- ngStyle bisa digunakan ketika kita ingin ada sebuah kondisi -->
+      {{ i+1 }}. Nama: {{ employee.name }}, Alamat: {{ employee.address }}, Unit: {{employee.unit}}
+    </span>
   </li>
 </ul>
 

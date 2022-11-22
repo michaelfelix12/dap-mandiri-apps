@@ -1,14 +1,57 @@
-<section class="p-5 accordion" id="accordionExample">
-
-  <div class="accordion-item" *ngFor="let f of faq">
-    <h2 class="accordion-header" id="headingOne">
-      <a class="accordion-button" type="button" data-bs-toggle="collapse" href="#{{f.id}}" aria-expanded="true">
-        {{ f.question }}
-      </a>
+<section id="faq" class="p-5">
+  <div class="container">
+    <h2
+      [class]="'text-center mb4'"
+      [style.color]="styles.color"
+      [style.font-size]="styles.fontSize"
+      [style.font-weight]="styles.fontWeight"
+    >
+      Frequently Ask Question
     </h2>
-    <div id="{{f.id}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        {{ f.answer }}
+
+    <h3 class="text-center" [ngStyle]="styles">Desc</h3>
+    <h4 class="text center" [innerHTML]="subTitle"></h4>
+
+    <div class="accordion accordion-flush" id="questions">
+
+      <!-- cara 1 penggunaan id agar bisa show/collapse satu per satu -->
+      <div class="accordion-item" *ngFor="let f of faq; index as i">
+        <h2 class="accordion-header" id="headingOne">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            [attr.data-bs-target]="'#question-one' + i"
+            aria-expanded="true"
+          >
+            {{ f.question }}
+          </button>
+        </h2>
+
+        <div
+          id="question-one{{ i }}"
+          class="accordion-collapse collapse"
+          aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            {{ f.answer }}
+          </div>
+        </div>
+
+      <!-- cara 2 penggunaan id agar bisa show/collapse satu per satu -->
+      <!-- <div class="accordion-item" *ngFor="let f of faq"> -->
+      <!-- <h2 class="accordion-header" id="headingOne">
+            <a class="accordion-button" type="button" data-bs-toggle="collapse" href="#{{f.id}}" aria-expanded="true">
+              {{ f.question }}
+            </a>
+          </h2>
+
+          <div id="{{f.id}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              {{ f.answer }}
+            </div>
+          </div> -->
       </div>
     </div>
   </div>

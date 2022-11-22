@@ -18,8 +18,10 @@ class="bg-primary text-light p-5 text-sm-start"
       <div class="card bg-light text-dark">
         <div class="card-body text-center">
           <div class="h1 mb-3">
+            <!-- untuk data binding (propoerti), itu pakai kurung kotak,
+              namun hanya bisa pada elemen -->
             <img
-              src="{{ i.img }}"
+              [src]="i.img"
               alt=""
               class="rounded-circle mb-3"
             />

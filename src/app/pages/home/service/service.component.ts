@@ -20,7 +20,7 @@ export class ServiceComponent implements OnInit {
       title: 'Hybrid',
       desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur velit non, ullam minima temporibus iste.',
       background: 'bg-primary',
-      textColor: 'text-light'
+      textColor: 'text-light',
     },
     {
       icon: 'bi bi-person',
