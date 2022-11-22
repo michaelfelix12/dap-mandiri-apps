@@ -1,37 +1,66 @@
-<h1>Component A</h1>
+<section class="p-5">
+  <h1>Component A</h1>
 
-<!-- Data Binding -->
-<!-- String Interpolation -->
-<p *ngIf="name">Name: {{name}}</p>
-<p *ngIf="address">Address: {{address}}</p>
-<p *ngIf="participants">Participants: {{participants}}</p>
-<p> {{ 10 * 10 }} </p>
-<!-- Tidak dapat melakukan assignment : error -->
-<!-- <p> {{ name = 'Pluto' }} </p> -->
-<!-- Tidak dapat melakukan binding object secara literal : [object, Object] -->
-<!-- Language: {{languages}} -->
-<p> Language: {{ languages.name }} {{ languages.status }}</p>
-<p> Language: {{ onViewLanguage() }} </p>
-<p> onMessage(): {{ onMessage() }} </p>
+  <!-- Data Binding -->
+  <!-- String Interpolation -->
+  <p *ngIf="name">Name: {{ name }}</p>
+  <p *ngIf="address">Address: {{ address }}</p>
+  <p *ngIf="participants">Participants: {{ participants }}</p>
+  <p>{{ 10 * 10 }}</p>
+  <!-- Tidak dapat melakukan assignment : error -->
+  <!-- <p> {{ name = 'Pluto' }} </p> -->
+  <!-- Tidak dapat melakukan binding object secara literal : [object, Object] -->
+  <!-- Language: {{languages}} -->
+  <p>Language: {{ languages.name }} {{ languages.status }}</p>
+  <p>Language: {{ onViewLanguage() }}</p>
+  <p>onMessage(): {{ onMessage() }}</p>
 
-<!-- <ul class="list-group">
-  <li class="list-group-item" *ngFor="let employee of mandiriEmployee">
-    {{ employee.name }}
-  </li>
-</ul> -->
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let employee of mandiriEmployee">
+      {{ employee.name }}
+    </li>
+  </ul>
 
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let employee of mandiriEmployee; let i=index"> <!-- index as i -->
+  <ul class="list-group">
+    <li
+      class="list-group-item"
+      *ngFor="let employee of mandiriEmployee; let i = index"
+    >
+      <!-- index as i -->
 
-    <span [ngStyle]="{'color': i % 2 == 0 ? 'gold' : 'blue'}"> <!-- ngStyle bisa digunakan ketika kita ingin ada sebuah kondisi -->
-      {{ i+1 }}. Nama: {{ employee.name }}, Alamat: {{ employee.address }}, Unit: {{employee.unit}}
-    </span>
-  </li>
-</ul>
+      <span [ngStyle]="{ color: i % 2 == 0 ? 'gold' : 'blue' }">
+        <!-- ngStyle bisa digunakan ketika kita ingin ada sebuah kondisi -->
+        {{ i + 1 }}. Nama: {{ employee.name }}, Alamat: {{ employee.address }},
+        Unit: {{ employee.unit }}
+      </span>
+    </li>
+  </ul>
 
-<ul class="list">
-  <li><a routerLink="/demo/component-a/child-aa">Child AA</a></li>
-  <li><a routerLink="/demo/component-a/child-ab">Child AB</a></li>
-</ul>
-<router-outlet></router-outlet>
-<a routerLink="/demo/component-b" class="btn btn-outline-primary">Go to component b</a>
+  <ul class="list">
+    <li><a routerLink="/demo/component-a/child-aa">Child AA</a></li>
+    <li><a routerLink="/demo/component-a/child-ab">Child AB</a></li>
+  </ul>
+  <router-outlet></router-outlet>
+  <!-- <a routerLink="/demo/component-b" class="btn btn-outline-primary">Go to component b</a> -->
+
+  <div class="btn-group">
+    <button routerLink="/demo/component-b" class="btn btn-outline-primary mb-5">
+      Go to component b
+    </button>
+    <button class="btn btn-outline-warning mb-5" [disabled]="!canClickButton" (click)="showMe()">
+      Show Me
+    </button>
+  </div>
+
+  <div class="mt-5 mb-5">
+    <h3 [innerHTML]="messageHover" (mouseover)="mouseOver()" (mouseout)="mouseOut()"></h3>
+  </div>
+
+  <h4>{{message}}</h4>
+
+  <div class="mb-5">
+    <input type="text" class="form-control" (change)="onMessageInput($event)">
+  </div>
+
+  <h5 class="mt-t mb-5">{{messageInput}}</h5>
+</section>
