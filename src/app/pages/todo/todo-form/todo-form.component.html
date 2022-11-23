@@ -4,7 +4,11 @@
     <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
       <div class="input-group news-input">
         <div class="input-group-text">
-          <input type="checkbox" class="form-check-input" />
+          <input
+            type="checkbox"
+            class="form-check-input"
+            formControlName="isCompleted"
+          />
         </div>
         <input
           type="text"
