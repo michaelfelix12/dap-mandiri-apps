@@ -1,16 +1,19 @@
 <section class="p-5">
   <div class="container text-center" style="margin-top: 50px">
-    <h1>TODO</h1><br>
+    <h1>TODO</h1>
+    <br />
     <div class="row text-center g-6">
-
       <div class="col-md">
-        <app-todo-list [todos]="todos"></app-todo-list>
+        <app-todo-list
+          [todos]="todos"
+          (toggleTodo)="onToggleTodo()"
+          (deleteTodo)="onDeleteTodo($event)"
+        ></app-todo-list>
       </div>
 
       <div class="col-md">
-        <app-todo-form></app-todo-form>
+        <app-todo-form (saveTodo)="onSaveTodo($event)"></app-todo-form>
       </div>
-
     </div>
   </div>
 </section>

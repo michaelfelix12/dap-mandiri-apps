@@ -1,8 +1,22 @@
 <h3>Form</h3>
-<form>
-  <div class="input-group news-input">
-    <input type="checkbox" class="form-check-input m-3" />
-    <input type="text" class="text form-control" placeholder="Todo" />
-    <button class="btn btn-dark btn-lg" type="button">ADD</button>
+<div class="shadow-sm p-3 bg-body rounded">
+  <div class="card-body">
+    <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+      <div class="input-group news-input">
+        <div class="input-group-text">
+          <input type="checkbox" class="form-check-input" />
+        </div>
+        <input
+          type="text"
+          class="text form-control"
+          placeholder="Todo"
+          aria-label="Todo"
+          formControlName="name"
+        />
+        <button class="btn btn-dark btn-lg" [disabled]="!todoForm.valid">
+          ADD
+        </button>
+      </div>
+    </form>
   </div>
-</form>
+</div>

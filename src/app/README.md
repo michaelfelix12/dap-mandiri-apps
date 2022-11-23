@@ -116,3 +116,11 @@ sehingga untuk path component-a bisa diubah jadi
 }
 ```
 - jangan lupa di shared.module.ts harus deklarasi NotFoundComponent
+
+# Session Storage
+session storage ini sudah bawaan dari js, berfungsi agar data bisa tersave di database bawaan si js
+# JSON.stringfy()
+berfungsi untuk mengubah tipe data object menjadi string
+
+# JSON.parse()
+berfungsi untuk mengubah tipe data menjadi javascript object
