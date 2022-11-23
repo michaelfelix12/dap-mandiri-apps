@@ -10,6 +10,10 @@ const routes: Routes = [
     loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule),
   },
   {
+    path: 'todo',
+    loadChildren: () => import('./todo/todo.module').then(m => m.TodoModule),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
