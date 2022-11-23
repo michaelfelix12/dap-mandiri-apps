@@ -9,6 +9,8 @@ import { TODO, Todo } from './model/todo.model';
 export class TodoComponent implements OnInit {
   todos: Todo[] = [];
 
+  todo!: Todo;
+
   constructor() {}
 
   ngOnInit(): void {
@@ -41,9 +43,18 @@ export class TodoComponent implements OnInit {
   }
 
   onSaveTodo(newTodo: Todo): void {
-    console.log('todo.component:', newTodo);
-    newTodo.id = this.todos.length + 1;
-    this.todos.push(newTodo);
+    if (newTodo.id) {
+      this.todos = this.todos.map((t) => {
+        if (t.id === newTodo.id) t = newTodo;
+        return t;
+      });
+      // sessionStorage.setItem(TODO, JSON.stringify(this.todos));
+    } else {
+      console.log('todo.component:', newTodo);
+      newTodo.id = this.todos.length + 1;
+      this.todos.push(newTodo);
+      // sessionStorage.setItem(TODO, JSON.stringify(this.todos));
+    }
     sessionStorage.setItem(TODO, JSON.stringify(this.todos));
   }
 
@@ -55,9 +66,13 @@ export class TodoComponent implements OnInit {
   onDeleteTodo(todo: Todo): void {
     for (let index = 0; index < this.todos.length; index++) {
       if (this.todos[index].id === todo.id) {
-        this.todos.splice(index,1)
+        this.todos.splice(index, 1);
       }
     }
     sessionStorage.setItem(TODO, JSON.stringify(this.todos));
+  }
+
+  onEditTodo(todo: Todo): void {
+    this.todo = todo;
   }
 }

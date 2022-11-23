@@ -12,6 +12,7 @@ export class TodoListComponent implements OnInit {
 
   @Output() toggleTodo: EventEmitter<Todo> = new EventEmitter<Todo>();
   @Output() deleteTodo: EventEmitter<Todo> = new EventEmitter<Todo>();
+  @Output() editTodo: EventEmitter<Todo> = new EventEmitter<Todo>();
 
   constructor() { }
 
@@ -25,5 +26,9 @@ export class TodoListComponent implements OnInit {
 
   onDeleteTodo(todo: Todo): void {
     this.deleteTodo.emit(todo);
+  }
+
+  onEditTodo(todo: Todo): void {
+    this.editTodo.emit(todo);
   }
 }
