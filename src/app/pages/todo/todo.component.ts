@@ -9,15 +9,22 @@ import { TODO, Todo } from './model/todo.model';
 export class TodoComponent implements OnInit {
   todos: Todo[] = [];
 
-  todo!: Todo;
+  // todo!: Todo;
+  private _todo!: Todo;
+
+  isLoading: boolean = true;
 
   constructor() {}
 
   ngOnInit(): void {
-    this.loadTodos();
+    setTimeout(() => {
+      this.loadTodos();
+    }, 5000)
   }
 
   loadTodos(): void {
+    this.isLoading = false;
+
     const sessionTodos: string = sessionStorage.getItem(TODO) as string;
     if (!sessionTodos) {
       const todos: Todo[] = [
@@ -40,6 +47,13 @@ export class TodoComponent implements OnInit {
       // JSON.parse -> mengubah STRING ke OBJECT
       this.todos = JSON.parse(sessionTodos);
     }
+  }
+
+  //get todo
+  get todo(): Todo { return this._todo as Todo }
+  //set todo
+  set todo(todo: Todo) {
+    this.onSaveTodo(todo);
   }
 
   onSaveTodo(newTodo: Todo): void {
@@ -73,6 +87,6 @@ export class TodoComponent implements OnInit {
   }
 
   onEditTodo(todo: Todo): void {
-    this.todo = todo;
+    this._todo = todo;
   }
 }

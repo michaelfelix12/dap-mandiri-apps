@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Employee } from '../getter-setter/employee';
 
 @Component({
   selector: 'app-component-a',
@@ -81,6 +82,13 @@ export class ComponentAComponent implements OnInit {
     //   this.name = name;
     //   this.address = address;
     // })
+
+    const employee: Employee = new Employee();
+    employee.fullName = 'Joko';
+    employee.address = 'Bali';
+    console.log(employee.fullName);
+    console.log(employee.address);
+    console.log(employee.toString());
 
     setTimeout(() => {
       this.canClickButton = true;

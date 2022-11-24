@@ -10,9 +10,18 @@
             formControlName="isCompleted"
           />
         </div>
+        <!-- <input
+          type="text"
+          class="form-control {{ isFormValid('name') }}"
+          placeholder="Todo"
+          aria-label="Todo"
+          formControlName="name"
+        /> -->
+
         <input
           type="text"
-          class="text form-control"
+          class="form-control"
+          [ngClass]="{'is-invalid': isFormValid('name')}"
           placeholder="Todo"
           aria-label="Todo"
           formControlName="name"
@@ -20,6 +29,12 @@
         <button class="btn btn-dark btn-lg" [disabled]="!todoForm.valid">
           ADD
         </button>
+        <div class="invalid-feedback" *ngIf="name.errors?.['required']">
+          Todo wajib diisi
+        </div>
+        <div class="invalid-feedback" *ngIf="name.errors?.['minlength']">
+          Todo wajib diisi minimal 3 karakter
+        </div>
       </div>
     </form>
   </div>
