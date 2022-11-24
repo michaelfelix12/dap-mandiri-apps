@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { DemoRoutingModule } from './demo-routing.module';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ChildComponent } from './child/child.component';
   imports: [
     CommonModule,
     DemoRoutingModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ]
 })
 export class DemoModule { }

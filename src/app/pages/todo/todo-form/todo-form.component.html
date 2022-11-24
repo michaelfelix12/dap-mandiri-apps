@@ -26,7 +26,10 @@
           aria-label="Todo"
           formControlName="name"
         />
-        <button class="btn btn-dark btn-lg" [disabled]="!todoForm.valid">
+        <!-- <button class="btn btn-dark btn-lg" [disabled]="!todoForm.valid">
+          ADD
+        </button> -->
+        <button appBsButton color="danger" [disabled]="!todoForm.valid">
           ADD
         </button>
         <div class="invalid-feedback" *ngIf="name.errors?.['required']">
