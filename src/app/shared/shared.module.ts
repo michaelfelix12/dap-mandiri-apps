@@ -6,6 +6,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 import { HighlightsDirective } from './directives/highlights.directive';
 import { BsButtonDirective } from './directives/bs-button.directive';
+import { DateCustomPipe } from './pipes/date-custom.pipe';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { BsButtonDirective } from './directives/bs-button.directive';
     FooterComponent,
     NotFoundComponent,
     HighlightsDirective,
-    BsButtonDirective
+    BsButtonDirective,
+    DateCustomPipe
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { BsButtonDirective } from './directives/bs-button.directive';
     HeaderComponent,
     FooterComponent,
     HighlightsDirective,
-    BsButtonDirective
+    BsButtonDirective,
+    DateCustomPipe
   ]
 })
 export class SharedModule { }
