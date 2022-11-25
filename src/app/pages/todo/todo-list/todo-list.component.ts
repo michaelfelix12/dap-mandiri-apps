@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Todo } from '../model/todo.model';
+import { TodoService } from '../service/todo.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -7,29 +8,25 @@ import { Todo } from '../model/todo.model';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
+  todos: Todo[] = [];
+  isLoading: boolean = true;
 
-  @Input() todos: Todo[] = [];
-
-  @Output() toggleTodo: EventEmitter<Todo> = new EventEmitter<Todo>();
-  @Output() deleteTodo: EventEmitter<Todo> = new EventEmitter<Todo>();
-  @Output() editTodo: EventEmitter<Todo> = new EventEmitter<Todo>();
-  @Input() isLoading: boolean = true;
-
-  constructor() { }
+  constructor(private readonly todoService: TodoService) { }
 
   ngOnInit(): void {
+    this.onLoadTodo();
+  }
+
+  onLoadTodo(): void {
+    this.isLoading = false;
+    this.todos = this.todoService.getAll();
   }
 
   onCheckTodo(todo: Todo): void {
-    todo.isCompleted = !todo.isCompleted;
-    this.toggleTodo.emit(todo);
+    this.todoService.toggle(todo);
   }
 
   onDeleteTodo(todo: Todo): void {
-    this.deleteTodo.emit(todo);
-  }
-
-  onEditTodo(todo: Todo): void {
-    this.editTodo.emit(todo);
+    this.todoService.remove(todo.id);
   }
 }
