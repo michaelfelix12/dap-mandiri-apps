@@ -1,69 +1,76 @@
 import { Injectable } from '@angular/core';
+import { Observable, Observer } from 'rxjs';
 import { TODO, Todo } from '../model/todo.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TodoService {
   private todos: Todo[] = [];
   private storage: Storage = sessionStorage;
 
-  constructor() { }
+  constructor() {}
 
   private setToStorage(): void {
     this.storage.setItem(TODO, JSON.stringify(this.todos));
   }
 
-  getAll(): Todo[] {
-    const sessionTodos: string = this.storage.getItem(TODO) as string;
-    try {
-      //Tenary
-      //kondisi ? 'bener' : 'tidak-benar'
-      const todos: Todo[] = sessionTodos
-        ? JSON.parse(sessionTodos)
-        : [
-          {
-            id: 1,
-            name: 'makan',
-            isCompleted: false,
-          },
-        ];
-      this.todos = todos;
-      this.setToStorage()
-      return todos;
-    } catch (error: any) {
-      return error.message;
-    }
-  }
-
-  save(todo: Todo): void {
-    try {
-      if (todo.id) {
-        this.todos = this.todos.map((t) => {
-          if (t.id === todo.id) t = todo;
-          return t;
-        });
-        // sessionStorage.setItem(TODO, JSON.stringify(this.todos));
-      } else {
-        console.log('todo.component:', todo);
-        todo.id = this.todos.length + 1;
-        this.todos.push(todo);
-        // sessionStorage.setItem(TODO, JSON.stringify(this.todos));
+  getAll(): Observable<Todo[]> {
+    return new Observable<Todo[]>((observer: Observer<Todo[]>) => {
+      const sessionTodos: string = this.storage.getItem(TODO) as string;
+      try {
+        //Tenary
+        //kondisi ? 'bener' : 'tidak-benar'
+        const todos: Todo[] = sessionTodos
+          ? JSON.parse(sessionTodos)
+          : [
+              {
+                id: 1,
+                name: 'makan',
+                isCompleted: false,
+              },
+            ];
+        this.todos = todos;
+        this.setToStorage();
+        observer.next(this.todos);
+      } catch (error: any) {
+        observer.error(error.message);
       }
-      this.setToStorage();
-
-    } catch (error: any) {
-      return error.message;
-    }
+    });
   }
 
-  get(id: number): Todo {
-    try {
-      return this.todos.find((t) => t.id === id) as Todo;
-    } catch (error: any) {
-      return error.message;
-    }
+  save(todo: Todo): Observable<void> {
+    return new Observable<void>((observer: Observer<void>) => {
+      try {
+        if (todo.id) {
+          this.todos = this.todos.map((t) => {
+            if (t.id === todo.id) t = todo;
+            return t;
+          });
+          // sessionStorage.setItem(TODO, JSON.stringify(this.todos));
+        } else {
+          console.log('todo.component:', todo);
+          todo.id = this.todos.length + 1;
+          this.todos.push(todo);
+          observer.next();
+          // sessionStorage.setItem(TODO, JSON.stringify(this.todos));
+        }
+        this.setToStorage();
+      } catch (error: any) {
+        observer.error(error.message);
+      }
+    })
   }
+
+  get(id: number): Observable<Todo> {
+    return new Observable<Todo>((observer: Observer<Todo>) => {
+      try {
+        observer.next(this.todos.find((t) => t.id === id) as Todo);
+      } catch (error: any) {
+        observer.error(error.message);
+      }
+  })
+}
 
   remove(id: number): void {
     try {
@@ -83,10 +90,9 @@ export class TodoService {
       this.todos.forEach((t) => {
         if (t.id === todo.id) t.isCompleted = !t.isCompleted;
         this.setToStorage();
-      })
+      });
     } catch (error: any) {
       console.error(error.message);
     }
   }
-
 }

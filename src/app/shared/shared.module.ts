@@ -8,6 +8,8 @@ import { HighlightsDirective } from './directives/highlights.directive';
 import { BsButtonDirective } from './directives/bs-button.directive';
 import { DateCustomPipe } from './pipes/date-custom.pipe';
 import { BadgeCustomPipe } from './pipes/badge-custom.pipe';
+import { ValidationMessageComponent } from './components/validation-message/validation-message.component';
+import { StringUtil } from './utils/string.util';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { BadgeCustomPipe } from './pipes/badge-custom.pipe';
     HighlightsDirective,
     BsButtonDirective,
     DateCustomPipe,
-    BadgeCustomPipe
+    BadgeCustomPipe,
+    ValidationMessageComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +32,9 @@ import { BadgeCustomPipe } from './pipes/badge-custom.pipe';
     HighlightsDirective,
     BsButtonDirective,
     DateCustomPipe,
-    BadgeCustomPipe
-  ]
+    BadgeCustomPipe,
+    ValidationMessageComponent
+  ],
+  providers: [StringUtil]
 })
 export class SharedModule { }

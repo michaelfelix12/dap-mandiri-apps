@@ -21,7 +21,7 @@
         <input
           type="text"
           class="form-control"
-          [ngClass]="{'is-invalid': isFormValid('name')}"
+          [ngClass]="{ 'is-invalid': isFormValid('name') }"
           placeholder="Todo"
           aria-label="Todo"
           formControlName="name"
@@ -32,13 +32,11 @@
         <button appBsButton color="danger" [disabled]="!todoForm.valid">
           ADD
         </button>
-        <div class="invalid-feedback" *ngIf="name.errors?.['required']">
-          Todo wajib diisi
-        </div>
-        <div class="invalid-feedback" *ngIf="name.errors?.['minlength']">
-          Todo wajib diisi minimal 3 karakter
-        </div>
       </div>
+      <app-validation-message
+        [control]="todoForm.get('name')"
+        [field]="'Todo'"
+      ></app-validation-message>
     </form>
   </div>
 </div>

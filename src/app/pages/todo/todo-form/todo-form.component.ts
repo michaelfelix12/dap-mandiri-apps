@@ -31,7 +31,9 @@ export class TodoFormComponent implements OnInit {
         const { id } = params;
         //+id ini menjadikan yang string -> number
         //berlaku untuk bilangan bulat
-        this.todo = this.todoService.get(+id);
+        this.todoService.get(+id).subscribe({
+          // observer.next(this.todos.find((t) => t.id === id) as Todo); -> masih salah
+        });
         this.setFormValue(this.todo);
       }
     })
@@ -52,7 +54,7 @@ export class TodoFormComponent implements OnInit {
     // console.log(this.todoForm.value);
     // this.todoChange.emit(this.todoForm.value);
 
-    this.todoService.save(this.todoForm.value);
+    this.todoService.save(this.todoForm.value).subscribe();
     this.todoForm.reset();
     this.router.navigateByUrl('todo')
   }
@@ -68,7 +70,7 @@ export class TodoFormComponent implements OnInit {
   //getter
   //tambahkan ! untuk memberikan kesan getter name
   //di bawah tidak akan null
-  get name() { return this.todoForm.get('name')! }
+  // get name() { return this.todoForm.get('name')! }
 
   // isFormValid(todoField: string): string {
   //   const control: AbstractControl = this.todoForm.get(todoField) as AbstractControl;
