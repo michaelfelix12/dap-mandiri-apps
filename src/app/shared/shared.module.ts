@@ -35,6 +35,8 @@ import { StringUtil } from './utils/string.util';
     BadgeCustomPipe,
     ValidationMessageComponent
   ],
-  providers: [StringUtil]
+  providers: [
+    StringUtil
+  ]
 })
 export class SharedModule { }

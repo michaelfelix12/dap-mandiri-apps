@@ -25,7 +25,7 @@ const components = [
     TodoRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [ TodoService ],
   exports: [

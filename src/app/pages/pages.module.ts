@@ -2,10 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeModule } from './home/home.module';
 import { PagesComponent } from './pages.component'
-import { RouterModule } from '@angular/router';
-import { CoursesModule } from "./courses/courses.module";
 import { PagesRoutingModule } from './pages-routing.module';
-import { TodoModule } from './todo/todo.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -17,10 +15,8 @@ import { TodoModule } from './todo/todo.module';
     imports: [
         CommonModule,
         HomeModule,
-        RouterModule,
-        CoursesModule,
-        TodoModule,
-        PagesRoutingModule
+        PagesRoutingModule,
+        SharedModule
     ]
 })
 export class PagesModule { }

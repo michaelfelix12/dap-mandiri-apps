@@ -5,6 +5,7 @@ import { ChildAbComponent } from "./demo/component-a/child-ab/child-ab.component
 import { ComponentAComponent } from "./demo/component-a/component-a.component";
 import { ComponentBComponent } from "./demo/component-b/component-b.component";
 import { NotFoundComponent } from "./shared/components/not-found/not-found.component";
+import { RouteGuard } from "./shared/guard/route.guard";
 
 const routes: Routes = [
   //Eager Load
@@ -57,11 +58,17 @@ const routes: Routes = [
   // }
 
   {
-    path: 'pages',
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: '',
     loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
   },
   {
     path: 'demo',
+    canActivate: [RouteGuard],
+    canActivateChild: [RouteGuard],
     loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
   },
   {

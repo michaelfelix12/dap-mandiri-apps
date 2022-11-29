@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { RouteGuard } from "../shared/guard/route.guard";
 const routes: Routes = [
   {
     path: 'home',
@@ -11,6 +12,8 @@ const routes: Routes = [
   },
   {
     path: 'todo',
+    canActivate: [RouteGuard],
+    canActivateChild: [RouteGuard],
     loadChildren: () => import('./todo/todo.module').then(m => m.TodoModule),
   },
   {
