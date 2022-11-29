@@ -11,7 +11,6 @@
         [checked]="todo.isCompleted"
         (click)="onCheckTodo(todo)"
       />
-      &nbsp;
       <label class="form-check-label">
         <!-- membuat text dicoret saat di ceklis (cara 1) -->
         <!-- <span class="text-decoration-line-through" *ngIf="todo.isCompleted">{{ todo.name }}</span>
@@ -53,7 +52,7 @@
       </button> -->
 
       <!-- membuat icon trash hilang saat di ceklis (cara 3) -->
-      <label for="" [innerHTML]="todo.isCompleted | badgeCustom" class=""></label>
+      &nbsp;<label for="" [innerHTML]="todo.isCompleted | badgeCustom" class=""></label>
 
       <button
         class="btn btn-link btn-sm float-end"

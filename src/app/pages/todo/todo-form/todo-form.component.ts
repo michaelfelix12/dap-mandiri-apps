@@ -19,22 +19,17 @@ export class TodoFormComponent implements OnInit {
     private readonly router: Router) { }
 
   ngOnInit(): void {
-    // setTimeout(() => {
-    //   console.log('TodoFormComponent.todo:', this.todo);
-    //   this.setFormValue(this.todo)
-    // }, 5000)
-
-
-
     this.route.params.subscribe({
       next: (params) => {
         const { id } = params;
         //+id ini menjadikan yang string -> number
         //berlaku untuk bilangan bulat
         this.todoService.get(+id).subscribe({
-          // observer.next(this.todos.find((t) => t.id === id) as Todo); -> masih salah
+          next: (todo: Todo) => {
+            this.todo = todo;
+            this.setFormValue(this.todo)
+          }
         });
-        this.setFormValue(this.todo);
       }
     })
   }
@@ -51,9 +46,6 @@ export class TodoFormComponent implements OnInit {
   });
 
   onSubmit(): void {
-    // console.log(this.todoForm.value);
-    // this.todoChange.emit(this.todoForm.value);
-
     this.todoService.save(this.todoForm.value).subscribe();
     this.todoForm.reset();
     this.router.navigateByUrl('todo')

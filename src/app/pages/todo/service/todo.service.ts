@@ -47,19 +47,17 @@ export class TodoService {
             if (t.id === todo.id) t = todo;
             return t;
           });
-          // sessionStorage.setItem(TODO, JSON.stringify(this.todos));
         } else {
           console.log('todo.component:', todo);
           todo.id = this.todos.length + 1;
           this.todos.push(todo);
           observer.next();
-          // sessionStorage.setItem(TODO, JSON.stringify(this.todos));
         }
         this.setToStorage();
       } catch (error: any) {
         observer.error(error.message);
       }
-    })
+    });
   }
 
   get(id: number): Observable<Todo> {
@@ -69,30 +67,35 @@ export class TodoService {
       } catch (error: any) {
         observer.error(error.message);
       }
-  })
-}
+    });
+  }
 
-  remove(id: number): void {
-    try {
-      for (let index = 0; index < this.todos.length; index++) {
-        if (this.todos[index].id === id) {
-          this.todos.splice(index, 1);
+  remove(id: number): Observable<void> {
+    return new Observable<void>((observer: Observer<void>) => {
+      try {
+        for (let index = 0; index < this.todos.length; index++) {
+          if (this.todos[index].id === id) {
+            this.todos.splice(index, 1);
+          }
         }
+        this.setToStorage();
+      } catch (error: any) {
+        observer.error(error.message);
       }
-      this.setToStorage();
-    } catch (error: any) {
-      console.error(error.message);
-    }
+    });
   }
 
-  toggle(todo: Todo): void {
-    try {
-      this.todos.forEach((t) => {
-        if (t.id === todo.id) t.isCompleted = !t.isCompleted;
-        this.setToStorage();
-      });
-    } catch (error: any) {
-      console.error(error.message);
-    }
+  toggle(todo: Todo): Observable<void> {
+    return new Observable<void>((observer: Observer<void>) => {
+      try {
+        this.todos.forEach((t) => {
+          if (t.id === todo.id) t.isCompleted = !t.isCompleted;
+          this.setToStorage();
+        });
+      } catch (error: any) {
+        observer.error(error.message);
+      }
+    });
   }
+
 }

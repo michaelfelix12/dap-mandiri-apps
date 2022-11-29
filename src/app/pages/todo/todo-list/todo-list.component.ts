@@ -27,10 +27,10 @@ export class TodoListComponent implements OnInit {
   }
 
   onCheckTodo(todo: Todo): void {
-    this.todoService.toggle(todo);
+    this.todoService.toggle(todo).subscribe();
   }
 
   onDeleteTodo(todo: Todo): void {
-    this.todoService.remove(todo.id);
+    this.todoService.remove(todo.id).subscribe();
   }
 }
