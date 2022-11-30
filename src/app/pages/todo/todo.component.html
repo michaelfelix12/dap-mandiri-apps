@@ -1,17 +1,33 @@
-<section class="p-5">
+<section id="todo" class="todo p-5 mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="todo-title text-center">
+          <h2>Todo</h2>
+          <h6 class="text-center">
+            {{ today | dateCustom: "eeee, dd MMMM yyyy":locale }}
+          </h6>
+          <div class="line"></div>
+        </div>
+      </div>
+      <div class="col-md-12 col-sm-12 mt-3">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="p-5">
   <div class="container text-center" style="margin-top: 50px">
     <h1>TODO</h1>
     <h6 class="text-center">
       {{ today | dateCustom: "eeee, dd MMMM yyyy":locale }}
     </h6>
     <br />
-    <div class="row text-center g-6">
+    <div class="row text-center g-12">
       <div class="col-md">
-        <app-todo-list></app-todo-list>
-      </div>
-      <div class="col-md">
-        <app-todo-form></app-todo-form>
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>
-</section>
+</section> -->

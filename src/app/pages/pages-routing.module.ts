@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { RouteGuard } from "../shared/guard/route.guard";
+import { TodoFormComponent } from "./todo/todo-form/todo-form.component";
 const routes: Routes = [
   {
     path: 'home',
